@@ -1,0 +1,94 @@
+/* MessageBubble.css */
+ 
+/* ── Row — controls left/right alignment ── */
+.bubble-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 4px;
+}
+ 
+.bubble-row--user {
+  justify-content: flex-end;
+}
+ 
+.bubble-row--character {
+  justify-content: flex-start;
+}
+ 
+/* ── Bubble shell ── */
+.bubble {
+  max-width: 72%;
+  padding: 8px 12px;
+  border-radius: 16px;
+  word-break: break-word;
+  font-family: var(--font-sans);
+}
+ 
+/* User bubble — right side */
+.bubble--user {
+  background: var(--color-primary);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+ 
+/* Character bubble — left side */
+.bubble--character {
+  background: var(--color-surface-2);
+  color: var(--color-text-1);
+  border: 1px solid var(--color-border);
+  border-bottom-left-radius: 4px;
+}
+ 
+/* ── Character header ── */
+.bubble__header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+ 
+.bubble__character-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1;
+}
+ 
+.bubble__show-name {
+  font-size: 11px;
+  color: var(--color-text-3);
+  line-height: 1;
+}
+ 
+/* ── Message text ── */
+.bubble__message {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* MessageBubbleMeta.css */
+ 
+.bubble-meta {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 4px;
+  justify-content: flex-end;
+}
+ 
+.bubble-meta__time {
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.6;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+}
+ 
+.bubble-meta__status {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
