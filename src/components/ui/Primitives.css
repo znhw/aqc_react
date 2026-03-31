@@ -1,0 +1,32 @@
+/* ─── Textarea ─── */
+.textarea {
+  padding: 0.625rem 0.875rem;
+  resize: none;
+  line-height: 1.6;
+  min-height: 1.6em;
+  overflow-y: hidden;
+  overflow: hidden;
+  resize: none;
+  box-sizing: border-box;
+    transition: height 0.1s ease;
+    field-sizing: content;
+}
+
+.message-input__textarea {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text-1);
+  background: transparent;
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 0;
+  align-self: center;
+  resize: none;
+  overflow-y: hidden;
+}
+ 
+.message-input__textarea::placeholder {
+  color: var(--color-text-3);
+}
+ 
