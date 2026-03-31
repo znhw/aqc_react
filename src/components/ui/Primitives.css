@@ -1,15 +1,16 @@
-/* ─── Textarea ─── */
-.textarea {
-  padding: 0.625rem 0.875rem;
+/* Use the class name you actually passed: .textarea-field */
+.textarea-field {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  /* Use a unitless line-height for easier math */
+  line-height: 1.5; 
+  font-family: inherit;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Crucial for height calculations */
   resize: none;
-  line-height: 1.6;
-  min-height: 1.6em;
-  overflow-y: hidden;
   overflow: hidden;
-  resize: none;
-  box-sizing: border-box;
-    transition: height 0.1s ease;
-    field-sizing: content;
 }
 
 .message-input__textarea {
@@ -22,8 +23,7 @@
   flex: 1;
   padding: 0;
   align-self: center;
-  resize: none;
-  overflow-y: hidden;
+  /* resize: none; */
 }
  
 .message-input__textarea::placeholder {

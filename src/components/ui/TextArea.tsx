@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from 'react';
+import React, { forwardRef, useRef, useEffect, useImperativeHandle } from 'react';
 import './Primitives.css'
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -7,44 +7,63 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
     maxRows?: number;
 } 
 
-export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
     {
         label,
         placeholder,
+        value,
         maxRows = 6,
         className = '',
         id,
         onChange,
+        style = {},
         ...props
     },
     ref
 ) {
     const innerRef = useRef<HTMLTextAreaElement>(null);
-    const resolvedRef = ref ?? innerRef;
-    // const resolvedRef = ( ref ?? innerRef ) as React.RefObject<HTMLTextAreaElement>;
-    const textareaId = id ?? (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
+    
+    useImperativeHandle(ref, () => innerRef.current!)
 
-    function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {  
-        const el = e.target;
-        el.style.height = 'auto';
-        const lineHeight = parseInt(getComputedStyle(el).lineHeight);
-        el.style.height = Math.min(el.scrollHeight, lineHeight * maxRows) + 'px';
-        onChange?.(e);
-    }
+    useEffect(() => {
+        const el = innerRef.current;
+        if (!el) return;
+
+        // 1. Reset height to shrink if text was deleted
+        el.style.height = '0px'; 
+
+        // 2. Get computed styles to find line-height and padding
+        const computed = window.getComputedStyle(el);
+        const lineHeight = parseFloat(computed.lineHeight);
+        const paddingTop = parseFloat(computed.paddingTop);
+        const paddingBottom = parseFloat(computed.paddingBottom);
+        
+        // Total height of the text content
+        const contentHeight = el.scrollHeight;
+        
+        // Calculate max allowed height based on maxRows
+        // We add padding back because scrollHeight includes it
+        const maxHeight = (lineHeight * maxRows) + paddingTop + paddingBottom;
+
+        if (contentHeight > maxHeight) {
+            el.style.height = `${maxHeight}px`;
+            el.style.overflowY = 'auto';
+        } else {
+            el.style.height = `${contentHeight}px`;
+            el.style.overflowY = 'hidden';
+        }
+    }, [value, maxRows]);
 
     return (
-        <div className={`textarea-wrapper ${className}`}>
-            {label && <label htmlFor={textareaId} className="textarea-label">{label}</label>}
             <textarea
-                id={textareaId}
-                ref={resolvedRef}
+                ref={innerRef}
                 placeholder={placeholder}
-                onChange={handleChange}
-                rows={1}
+                value={value}
+                onChange={onChange}
                 className={`textarea-field ${className}`}
+                style={{ resize: 'none', ...style }}
                 {...props}
             />
-        </div>
     )
 })
 

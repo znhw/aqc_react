@@ -17,7 +17,7 @@ export function MessageInput({
     const [message, setMessage] = useState('');
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-    const isEmpty = message.trim() === '';
+    const isEmpty = message.trim().length === 0;
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(e.target.value);
@@ -28,9 +28,6 @@ export function MessageInput({
         if (!trimmed) return;
         onSend(trimmed);
         setMessage('');
-        if (textareaRef.current) {
-            textareaRef.current.style.height = 'auto';
-        }
         textareaRef.current?.focus();
     }, [message, onSend]);
 
