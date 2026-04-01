@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useChat } from '../hooks/useChat';
 import { MessageList } from '../components/chat/MessageList';
 import { MessageInput } from '../components/chat/MessageInput';
-import type { Message, TypingState } from '../components/chat/MessageList';
+import type { Message } from '../types/chat';
+import type {  TypingState } from '../components/chat/MessageList';
 
 export interface ChatRoomProps {
     initialMessages?: Message[];
@@ -14,21 +15,21 @@ export function ChatRoom({
     welcomeMessage, 
     typingIndicator = false
 }: ChatRoomProps) {
-    const [messages, setMessages] = useState<Message[]>(initialMessages);
+    const { messages, handleSend } = useChat(initialMessages);
 
-    function handleSend(text: string) {
-        const now = new Date().toISOString();
+    // function handleSend(text: string) {
+    //     const now = new Date().toISOString();
 
-        const newMessage: Message = {
-            role: 'user',
-            message: text,
-            timestamp: now,
-            date: now.split('T')[0], // Extract date portion
-            status: 'sent'
-        };
+    //     const newMessage: Message = {
+    //         role: 'user',
+    //         message: text,
+    //         timestamp: now,
+    //         date: now.split('T')[0], // Extract date portion
+    //         status: 'sent'
+    //     };
         
-        setMessages((prev) => [...prev, newMessage]);
-    }
+    //     setMessages((prev) => [...prev, newMessage]);
+    // }
 
     return (
         <div className="chat-room">
