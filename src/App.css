@@ -1,0 +1,63 @@
+:root {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    border: 1px solid red;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    /* height: 100dvh; */
+    min-height: 100vh; /* ensures main takes full viewport height */
+    margin: auto;
+    width: 80%;
+    border: 1px solid blue;
+}
+
+.header {
+    flex: 0 0 auto;
+    border: 1px solid black;
+    position: sticky;
+    top: 0;
+}
+
+.chat-room {
+    flex: 1;              /* takes all remaining height */
+    display: flex;
+    flex-direction: column;
+    /* overflow: hidden;     prevents chat-room itself from scrolling */
+    width: 80%;
+    margin: auto;
+    border: 1px solid green;
+}
+
+.message-list {
+    flex: 1;              /* grows to fill space above the input */
+    /* overflow-y: auto;     THIS is the only scrollable area */
+    width: 70%;
+    border: 1px solid orange;
+    margin: auto;
+}
+
+.message-input-wrapper {
+    /* flex: 0 0 auto;       stays pinned at the bottom, never shrinks */
+    padding: 10px;
+    margin: 0 auto 20px auto;
+    width: 70%;
+    border: 1px solid purple;
+    position: sticky;
+    bottom: 0;
+    background-color: black;
+}
+

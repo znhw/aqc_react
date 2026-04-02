@@ -5,10 +5,10 @@ import './App.css'
 function App() {
 
   return (
-    <>
-     <ChatRoom/>
-
-    </>
+    <main>
+      <div className='header'>Animeness</div>
+      <ChatRoom/>
+    </main>
   )
 }
 

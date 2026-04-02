@@ -17,20 +17,6 @@ export function ChatRoom({
 }: ChatRoomProps) {
     const { messages, handleSend } = useChat(initialMessages);
 
-    // function handleSend(text: string) {
-    //     const now = new Date().toISOString();
-
-    //     const newMessage: Message = {
-    //         role: 'user',
-    //         message: text,
-    //         timestamp: now,
-    //         date: now.split('T')[0], // Extract date portion
-    //         status: 'sent'
-    //     };
-        
-    //     setMessages((prev) => [...prev, newMessage]);
-    // }
-
     return (
         <div className="chat-room">
             <MessageList
@@ -38,7 +24,9 @@ export function ChatRoom({
                 welcomeMessage={welcomeMessage}
                 typingIndicator ={typingIndicator === true ? { characterName: 'Character', showName: 'Show' } : typingIndicator}
             />
-            <MessageInput onSend={handleSend} />
+            <MessageInput 
+                onSend={handleSend} 
+            />
         </div>
     );
 }
