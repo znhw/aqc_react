@@ -1,8 +1,8 @@
-import { ChatRoom } from './pages/ChatRoom'
 import './App.css'
 import { Header } from './components/layout/Header'
-import "@fontsource/open-sans/index.css";
-import "@fontsource/xanh-mono/index.css";
+import { lazy, Suspense } from 'react'
+
+const ChatRoom = lazy(() => import('./pages/ChatRoom'))
 
 
 function App() {
@@ -10,7 +10,9 @@ function App() {
   return (
     <main>
       <Header />
-      <ChatRoom/>
+      <Suspense fallback={<div style={{ color: 'var(--theme-color)', textAlign: 'center', marginTop: '2rem' }}>Loading...</div>}>
+        <ChatRoom />
+      </Suspense>
     </main>
   )
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useChat } from '../hooks/useChat';
 import { MessageList } from '../components/chat/MessageList';
 import { MessageInput } from '../components/chat/MessageInput';
@@ -10,11 +11,11 @@ export interface ChatRoomProps {
     typingIndicator?: TypingState | boolean;
 }
 
-export function ChatRoom({
+const ChatRoom: React.FC<ChatRoomProps> = ({
     initialMessages = [],
     welcomeMessage, 
     typingIndicator = false
-}: ChatRoomProps) {
+}) => {
     const { messages, handleSend } = useChat(initialMessages);
 
     return (
@@ -30,3 +31,5 @@ export function ChatRoom({
         </div>
     );
 }
+
+export default ChatRoom;

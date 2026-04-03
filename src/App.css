@@ -2,7 +2,20 @@
     box-sizing: border-box;
     --background-color: #282a2e;
     --theme-color: #ccf7ff;
-    --font-family: "Open Sans", sans-serif;
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url('./fonts/open-sans/files/open-sans-latin-400-normal.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Xanh Mono";
+    src: url('./fonts/xanh-mono/files/xanh-mono-latin-400-normal.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 *,
@@ -17,7 +30,7 @@ html, body {
     height: 100%;
     background-color: var(--background-color);
     /* border: 1px solid red; */
-    font-family: var(--font-family);
+    font-family: "Open Sans", sans-serif;
 }
 
 main {
@@ -88,7 +101,6 @@ main {
     background-color: var(--background-color);
 }
 
-
 .message-textarea {
     width: 100%;
     padding: 12px 48px 12px 12px; /* right padding = space for button */
@@ -103,4 +115,21 @@ main {
   position: absolute;
   right: 8px;
   bottom: 45px; /* or top: 50% + transform if you want vertical center */
+}
+
+@media screen and (max-width: 840px) {
+    main {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header h1 {
+        font-size: 18px;
+    }
+
+    main {
+        width: 98%;
+    }
+    
 }
