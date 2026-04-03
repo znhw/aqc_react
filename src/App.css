@@ -1,5 +1,8 @@
 :root {
     box-sizing: border-box;
+    --background-color: #282a2e;
+    --theme-color: #ccf7ff;
+    --font-family: "Open Sans", sans-serif;
 }
 
 *,
@@ -12,52 +15,92 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    border: 1px solid red;
+    background-color: var(--background-color);
+    /* border: 1px solid red; */
+    font-family: var(--font-family);
 }
 
 main {
     display: flex;
     flex-direction: column;
-    /* height: 100dvh; */
-    min-height: 100vh; /* ensures main takes full viewport height */
+    height: 100dvh;
     margin: auto;
-    width: 80%;
-    border: 1px solid blue;
+    width: 60%;
+    padding: 10px;
+    border: 1px solid var(--theme-color);
+    border-radius: 20px;
 }
 
 .header {
     flex: 0 0 auto;
-    border: 1px solid black;
-    position: sticky;
+    /* border: 1px solid var(--theme-color); */
+    /* position: sticky; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     top: 0;
+    height: 50px;;
+    padding: 0 10px;
+    font-family: "xanh mono", monospace;
+    color: var(--theme-color);
+    h1 {
+        font-size: 24px;
+    }
+    .discord-btn {
+        color: white;
+        background-color: none;
+        all: unset;
+        cursor: pointer;
+    }
 }
 
 .chat-room {
     flex: 1;              /* takes all remaining height */
     display: flex;
     flex-direction: column;
-    /* overflow: hidden;     prevents chat-room itself from scrolling */
-    width: 80%;
+    overflow: hidden;    
+    width: 100%;
     margin: auto;
-    border: 1px solid green;
+    padding: 0 10px;
+    /* border: 1px solid green; */
 }
 
 .message-list {
     flex: 1;              /* grows to fill space above the input */
-    /* overflow-y: auto;     THIS is the only scrollable area */
-    width: 70%;
-    border: 1px solid orange;
+    overflow-y: auto;   /*  THIS is the only scrollable area */
+    width: 100%;
+    border: 1px solid var(--theme-color);
+    background-color: azure;
+    padding: 15px;
     margin: auto;
+    margin-bottom: 30px;
 }
 
 .message-input-wrapper {
-    /* flex: 0 0 auto;       stays pinned at the bottom, never shrinks */
-    padding: 10px;
+    flex: 0 0 auto;       /* stays pinned at the bottom, never shrinks */
     margin: 0 auto 20px auto;
-    width: 70%;
-    border: 1px solid purple;
+    width: 100%;
+    height: 80px;
+    /* border: 1px solid purple; */
     position: sticky;
     bottom: 0;
-    background-color: black;
+    background-color: var(--background-color);
 }
 
+
+.message-textarea {
+    width: 100%;
+    padding: 12px 48px 12px 12px; /* right padding = space for button */
+    border-radius: 5px;
+    min-height: 50px;
+    border: 1px solid var(--theme-color);
+    -webkit-box-shadow: -1px 2px 6px 2px rgba(204,247,255,0.93); 
+    box-shadow: -1px 2px 6px 2px rgba(204,247,255,0.93);
+}
+
+.send-button {
+  position: absolute;
+  right: 8px;
+  bottom: 45px; /* or top: 50% + transform if you want vertical center */
+}

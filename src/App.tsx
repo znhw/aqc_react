@@ -1,12 +1,15 @@
-// import { MessageBubble } from './components/chat/MessageBubble'
 import { ChatRoom } from './pages/ChatRoom'
 import './App.css'
+import { Header } from './components/layout/Header'
+import "@fontsource/open-sans/index.css";
+import "@fontsource/xanh-mono/index.css";
+
 
 function App() {
 
   return (
     <main>
-      <div className='header'>Animeness</div>
+      <Header />
       <ChatRoom/>
     </main>
   )

@@ -1,4 +1,5 @@
 import './Chat.css'
+import { formatDate } from '../../utils/formatDate';
 
 export type SendStatus = 'sending' | 'sent' | 'delivered' | 'read' | 'failed';
 
@@ -10,7 +11,7 @@ export interface MessageBubbleMetaProps {
 export function MessageBubbleMeta({ timestamp, status }: MessageBubbleMetaProps) {
     return (
         <div>
-            <span>{timestamp}</span>
+            <span>{formatDate(timestamp)}</span>
             {status && (
                 <span aria-label={status}>
                     <StatusIcon status={status} />

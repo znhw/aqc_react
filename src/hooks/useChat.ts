@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { fetchQuote } from '../services/chatServices';
 import type { Message } from '../types/chat';
 
-const DEBOUNCE_MS = 1500; // wait 1.5s after last message before sending
+const DEBOUNCE_MS = 2000; // wait 2s after last message before sending
 
 export function useChat(initialMessages: Message[] = []) {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
