@@ -30,10 +30,10 @@ export function MessageBubble(props: MessageBubbleProps) {
                 {!isUser && (
                     <div>
                         <span className="bubble-row__character-name">{props.characterName}</span>
-                         <span>{props.showName}</span>
+                         <span className="bubble-row__show-name"> of {props.showName}</span>
                     </div>
                 )}
-
+                {isUser && <span>me:</span>}
                 <p>{message}</p>
 
                 <MessageBubbleMeta timestamp={timestamp} status={isUser ? props.status : undefined} />

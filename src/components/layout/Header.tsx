@@ -9,7 +9,7 @@ export function Header() {
                 <IconButton 
                     icon={<DiscordIcon size={20} />} 
                     label="Join Discord" 
-                    onClick={() => window.open('https://discord.gg/animeness', '_blank')}
+                    onClick={() => window.open('https://discord.gg/6syJbuwr', '_blank')}
                     className='discord-btn'
                 />
             </div>

@@ -4,6 +4,7 @@ import { DateDivider } from './DateDivider';
 import { TypingIndicator } from './TypingIndicator';
 import { formatDate } from '../../utils/formatDate';
 import type { SendStatus } from './MessageBubbleMeta';
+import './Chat.css';
 
 export interface Message {
     // id: string;
@@ -37,7 +38,7 @@ export function MessageList({
     return (
         <div className="message-list">
             {!hasMessages && welcomeMessage && (
-                <div className="welcome-message">{welcomeMessage}</div>
+                <div className="welcome-message">{`Welcome, ${welcomeMessage}!`}</div>
             )} 
 
             {hasMessages && renderWithDateDividers(messages)}

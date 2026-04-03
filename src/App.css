@@ -5,14 +5,14 @@
 }
 @font-face {
     font-family: "Open Sans";
-    src: url('./fonts/open-sans/files/open-sans-latin-400-normal.woff2') format('woff2');
+    src: url('/fonts/open-sans/files/open-sans-latin-400-normal.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Xanh Mono";
-    src: url('./fonts/xanh-mono/files/xanh-mono-latin-400-normal.woff2') format('woff2');
+    src: url('/fonts/xanh-mono/files/xanh-mono-latin-400-normal.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -80,7 +80,7 @@ main {
 }
 
 .message-list {
-    flex: 1;              /* grows to fill space above the input */
+    flex: 1;           /* grows to fill space above the input */
     overflow-y: auto;   /*  THIS is the only scrollable area */
     width: 100%;
     border: 1px solid var(--theme-color);
@@ -102,8 +102,8 @@ main {
 }
 
 .message-textarea {
-    width: 100%;
-    padding: 12px 48px 12px 12px; /* right padding = space for button */
+    width: 80%;
+    padding: 12px 80px 12px 12px; /* right padding = space for button */
     border-radius: 5px;
     min-height: 50px;
     border: 1px solid var(--theme-color);

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useChat } from '../hooks/useChat';
 import { MessageList } from '../components/chat/MessageList';
 import { MessageInput } from '../components/chat/MessageInput';
@@ -11,18 +10,18 @@ export interface ChatRoomProps {
     typingIndicator?: TypingState | boolean;
 }
 
-const ChatRoom: React.FC<ChatRoomProps> = ({
+export function ChatRoom ({
     initialMessages = [],
     welcomeMessage, 
     typingIndicator = false
-}) => {
+}: ChatRoomProps) {
     const { messages, handleSend } = useChat(initialMessages);
 
     return (
         <div className="chat-room">
             <MessageList
                 messages={messages}
-                welcomeMessage={welcomeMessage}
+                welcomeMessage={"start a chat with anime characters!"}
                 typingIndicator ={typingIndicator === true ? { characterName: 'Character', showName: 'Show' } : typingIndicator}
             />
             <MessageInput 
