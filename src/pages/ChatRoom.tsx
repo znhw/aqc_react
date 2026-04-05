@@ -21,7 +21,7 @@ export function ChatRoom ({
         <div className="chat-room">
             <MessageList
                 messages={messages}
-                welcomeMessage={"start a chat with anime characters!"}
+                welcomeMessage={welcomeMessage ?? "start a chat with anime characters!"}
                 typingIndicator ={typingIndicator === true ? { characterName: 'Character', showName: 'Show' } : typingIndicator}
             />
             <MessageInput 
