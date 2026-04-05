@@ -1,8 +1,11 @@
 import type { ChatResponse } from '../types/chat';
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export async function fetchQuote(messages: string[]): Promise<ChatResponse> {
+  
+  console.log('Fetching from:', `${API_URL}/api/chat`);
+  
   const response = await fetch(`${API_URL}/api/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
