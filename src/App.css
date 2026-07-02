@@ -1,18 +1,19 @@
 :root {
     box-sizing: border-box;
     --background-color: #282a2e;
-    --theme-color: #ccf7ff;
+    --theme-color: #020024;
+    --border-radius: 10px;
 }
 @font-face {
-    font-family: "Open Sans";
-    src: url('/fonts/open-sans/files/open-sans-latin-400-normal.woff2') format('woff2');
+    font-family: "Geist Pixel";
+    src: url('/fonts/geist-pixel/GeistPixel-Regular-VariableFont_ELSH.ttf') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
-    font-family: "Xanh Mono";
-    src: url('/fonts/xanh-mono/files/xanh-mono-latin-400-normal.woff2') format('woff2');
+    font-family: "Geist";
+    src: url('public/fonts/geist/files/Geist-Regular.ttf') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -29,8 +30,7 @@ html, body {
     padding: 0;
     height: 100%;
     background-color: var(--background-color);
-    /* border: 1px solid red; */
-    font-family: "Open Sans", sans-serif;
+    font-family: "Geist Pixel", sans-serif;
 }
 
 main {
@@ -39,32 +39,30 @@ main {
     height: 100dvh;
     margin: auto;
     width: 60%;
-    padding: 10px;
-    border: 1px solid var(--theme-color);
-    border-radius: 20px;
+    /* background-color: #240b7d; */
+    justify-content: space-between;
+}
+
+textarea:focus {
+    outline: 1px solid #060680 ;
 }
 
 .header {
     flex: 0 0 auto;
-    /* border: 1px solid var(--theme-color); */
-    /* position: sticky; */
+    background: #020024;
+    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(189, 244, 255, 1) 100%);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    top: 0;
-    height: 50px;;
-    padding: 0 10px;
-    font-family: "xanh mono", monospace;
-    color: var(--theme-color);
+    top: 0px;
+    height: 30px;;
+    padding: 10px;
+    font-family: "Geist Pixel", sans-serif;
+    color: whitesmoke;
     h1 {
-        font-size: 24px;
-    }
-    .discord-btn {
-        color: white;
-        background-color: none;
-        all: unset;
-        cursor: pointer;
+        font-size: 15px;
+        font-weight: 200;
     }
 }
 
@@ -74,46 +72,49 @@ main {
     flex-direction: column;
     overflow: hidden;    
     width: 100%;
+    background: #ABABAB;
     margin: auto;
-    padding: 0 10px;
-    /* border: 1px solid green; */
 }
 
 .message-list {
     flex: 1;           /* grows to fill space above the input */
     overflow-y: auto;   /*  THIS is the only scrollable area */
-    width: 100%;
+    width: 98%;
     border: 1px solid var(--theme-color);
-    background-color: azure;
-    padding: 15px;
+    background-color: rgb(210, 210, 210);
+    background-color: #060680;
+    color: #F0F0F0;
+    padding: 10px;
     margin: auto;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
 .message-input-wrapper {
     flex: 0 0 auto;       /* stays pinned at the bottom, never shrinks */
     margin: 0 auto 20px auto;
-    width: 100%;
+    width: 98%;
     height: 80px;
-    /* border: 1px solid purple; */
     position: sticky;
-    bottom: 0;
-    background-color: var(--background-color);
+    bottom: 10px;
+    margin: 10px 4px 0px 4px;
+    margin: auto;
+    overflow-y: scroll;
+    padding: 2px;
 }
 
 .message-textarea {
     width: 80%;
     padding: 12px 80px 12px 12px; /* right padding = space for button */
-    border-radius: 5px;
     min-height: 50px;
-    border: 1px solid var(--theme-color);
-    -webkit-box-shadow: -1px 2px 6px 2px rgba(204,247,255,0.93); 
-    box-shadow: -1px 2px 6px 2px rgba(204,247,255,0.93);
+    /* border: 1px solid var(--theme-color); */
+    background: #E0E0E0;
 }
 
 .send-button {
-  position: absolute;
-  right: 8px;
+  position: sticky;
+  left: 800px;
+  margin-right: 10px;
   bottom: 45px; /* or top: 50% + transform if you want vertical center */
 }
 
@@ -123,10 +124,12 @@ main {
     }
 }
 
-@media screen and (max-width: 500px) {
-    .header h1 {
-        font-size: 18px;
+@media screen and (max-width: 650px) {
+    main {
+        width: 98%;
     }
+}
+@media screen and (max-width: 550px) {
 
     main {
         width: 98%;

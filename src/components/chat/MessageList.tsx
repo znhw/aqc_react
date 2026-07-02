@@ -1,8 +1,6 @@
 import React from 'react';
 import { MessageBubble } from './MessageBubble';
-import { DateDivider } from './DateDivider';
 import { TypingIndicator } from './TypingIndicator';
-import { formatDate } from '../../utils/formatDate';
 import type { SendStatus } from './MessageBubbleMeta';
 import './Chat.css';
 
@@ -10,7 +8,7 @@ export interface Message {
     // id: string;
     role: 'user' | 'character';
     message: string;
-    timestamp: string;
+    // timestamp: string;
     date?: string;
     characterName?: string;
     showName?: string;
@@ -52,15 +50,8 @@ export function MessageList({
 
 function renderWithDateDividers(messages: Message[]) {
     const elements: React.ReactNode[] = [];
-    let lastDate: string | undefined;
 
     messages.forEach((msg, index) => {
-        if (msg.date && msg.date !== lastDate) {
-            elements.push(
-                <DateDivider key={`divider-${index}`} date={formatDate(msg.date)} />
-            );
-            lastDate = msg.date;
-        }
         
         elements.push(
             msg.role === 'user' ? (
@@ -68,7 +59,7 @@ function renderWithDateDividers(messages: Message[]) {
                     key={index}
                     role="user" 
                     message={msg.message}
-                    timestamp={msg.timestamp}
+                    // timestamp={msg.timestamp}
                     status={msg.status ?? 'sent'}
                 />  
             ) : (
@@ -76,7 +67,7 @@ function renderWithDateDividers(messages: Message[]) {
                     key={index}
                     role="character"
                     message={msg.message}
-                    timestamp={msg.timestamp}
+                    // timestamp={msg.timestamp}
                     characterName={msg.characterName ?? ''}
                     showName={msg.showName ?? ''}
                 />
