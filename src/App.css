@@ -90,6 +90,11 @@ textarea:focus {
     margin-bottom: 30px;
 }
 
+.typingIndicator {
+    padding-left: 10px;
+    font-style: italic;
+}
+
 .message-input-wrapper {
     flex: 0 0 auto;       /* stays pinned at the bottom, never shrinks */
     margin: 0 auto 20px auto;

@@ -38,7 +38,11 @@ export function useChat(initialMessages: Message[] = []) {
     setIsTyping(true);
 
     try {
-      const data = await fetchQuote([text]);
+      const [data] = await Promise.all([
+        fetchQuote([text]),
+        new Promise((resolve) => setTimeout(resolve, 5000)), // Simulate a delay for typing indicator
+      ]);
+        fetchQuote([text]);
 
       addAssistantMessage(
         data.quote.quote,
@@ -58,6 +62,7 @@ export function useChat(initialMessages: Message[] = []) {
 
   function handleSend(text: string) {
     addUserMessage(text);
+    setIsTyping(true);
     sendMessage(text);
    
   }

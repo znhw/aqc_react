@@ -1,6 +1,5 @@
 import React from 'react';
 import { MessageBubble } from './MessageBubble';
-import { TypingIndicator } from './TypingIndicator';
 import type { SendStatus } from './MessageBubbleMeta';
 import './Chat.css';
 
@@ -15,15 +14,11 @@ export interface Message {
     status?: SendStatus;
 }
 
-export interface TypingState {
-  characterName?: string
-  showName?: string
-}
 
 export interface MessageListProps {
     messages: Message[];
     welcomeMessage?: string;
-    typingIndicator?: TypingState | boolean;
+    typingIndicator?:  boolean;
 }
 
 export function MessageList({ 
@@ -39,16 +34,16 @@ export function MessageList({
                 <div className="welcome-message">{`Welcome, ${welcomeMessage}!`}</div>
             )} 
 
-            {hasMessages && renderWithDateDividers(messages)}
+            {hasMessages && renderMessages(messages)}
 
             {typingIndicator && (
-                <TypingIndicator />
+               <p className='typingIndicator'>typing . . .</p>
             )}
         </div>
     );
 }
 
-function renderWithDateDividers(messages: Message[]) {
+function renderMessages(messages: Message[]) {
     const elements: React.ReactNode[] = [];
 
     messages.forEach((msg, index) => {
