@@ -9,6 +9,3 @@ export type { IconButtonProps, IconButtonSize, IconButtonVariant } from './IconB
 
 export { TextArea } from './TextArea';
 export type { TextAreaProps } from './TextArea';
-
-export { Tooltip } from './Tooltip';
-export type { TooltipProps } from './Tooltip';  
