@@ -31,7 +31,7 @@ export function MessageList({
     return (
         <div className="message-list">
             {!hasMessages && welcomeMessage && (
-                <div className="welcome-message">{`Welcome, ${welcomeMessage}!`}</div>
+                <div className="welcome-message">{`Hey there, ${welcomeMessage}`}</div>
             )} 
 
             {hasMessages && renderMessages(messages)}

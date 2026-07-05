@@ -23,13 +23,20 @@ export function ChatRoom ({
                         <button>𝓲</button>
                     </Popover.Trigger>
                     <Popover.Content>
-                        <p className='info-content'>This is some information about the app.</p>
+                        <div className='info-content'>
+                            <p>
+                            Share what's on your mind, whether it's a feeling, a memory, or a random thought, and the app will match you with quotes that relate with your moment.
+                            </p>
+                            <p>
+                                For support or feedback, please reach out at <a href="mailto:animeness@hotmail.com">animeness@hotmail.com</a>
+                            </p>
+                        </div>
                     </Popover.Content>
                 </Popover>
             </div>
             <MessageList
                 messages={messages}
-                welcomeMessage={welcomeMessage ?? "start a chat with anime characters!"}
+                welcomeMessage={welcomeMessage ?? "what's on your mind?"}
                 typingIndicator ={isTyping}
             />
             <MessageInput 
