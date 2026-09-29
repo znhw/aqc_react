@@ -2,9 +2,10 @@
 export function Header() {
     return (
         <header className="header">
-            <a href="https://quote.animeness.com" rel="noopener noreferrer">
+            {/* <a href="https://quote.animeness.com" rel="noopener noreferrer">
                 https://quote.animeness.com
-            </a>
+            </a> */}
+            <p>Anime Quote Chatbot</p>
         </header>
     );
 }
