@@ -6,6 +6,12 @@ The application provides a chat-style interface where users can describe a thoug
 
 This repository contains the **frontend client**. Semantic retrieval, embeddings, and vector search are handled by a separate backend service.
 
+Related Article
+
+[📖 Building A Retrieval System: Keywords vs. Natural Language](https://www.zenshin.blog/posts/keyword-vs-semantic-retrieval/)
+
+A technical write-up on the retrieval system behind this project, comparing fuzzy keyword search with semantic search using MiniLM embeddings and LanceDB.
+
 ## Tech Stack
 
 - React
