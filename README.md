@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# React - Semantic Anime Quote Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React single-page application for finding contextually relevant anime quotes from natural-language input.
 
-Currently, two official plugins are available:
+The application provides a chat-style interface where users can describe a thought, feeling, or situation and receive a semantically relevant anime quote.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This repository contains the **frontend client**. Semantic retrieval, embeddings, and vector search are handled by a separate backend service.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- REST API
+- CSS
+- ESLint
 
-## Expanding the ESLint configuration
+## How It Works
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The frontend acts as the client for the semantic quote retrieval system:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. The user enters a natural-language prompt.
+2. The React client sends the prompt to the backend API.
+3. The backend converts the input into an embedding.
+4. Vector similarity search retrieves relevant anime quotes.
+5. The selected quote is returned and rendered in the chat interface.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The frontend is intentionally kept separate from the retrieval implementation.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Frontend Architecture
+
+The application uses a modular frontend structure with responsibilities separated between page composition, feature components, application state, API communication, and reusable UI primitives.
+
+```text
+src/
+├── components/
+│   ├── chat/        # Chat-specific components
+│   ├── layout/      # Application layout
+│   └── ui/          # Reusable UI primitives
+├── hooks/           # Application state and interaction logic
+├── pages/           # Page-level composition
+├── services/        # Backend API communication
+├── types/           # Shared TypeScript types
+└── utils/           # Shared utilities
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Chat interactions are coordinated through the `useChat` hook, while backend communication is isolated within the service layer. Presentational components remain focused on rendering and user interaction.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This keeps UI concerns separate from application logic and external API communication.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+
+Key parts of the application include:
+
+- `ChatRoom` — page-level composition for the chat experience
+- `useChat` — manages chat state and interaction logic
+- `chatServices` — handles communication with the backend API
+- `components/chat` — chat-specific presentation components
+- `components/ui` — reusable UI primitives
+- `types/chat` — shared TypeScript definitions for chat data
+
+## Running Locally
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository and install the dependencies:
+
+```bash
+npm install
 ```
+
+Start the Vite development server:
+
+```bash
+npm run dev
+```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+## Backend
+
+This repository contains only the frontend application.
+
+The backend is responsible for:
+
+- Generating text embeddings
+- Storing and querying quote vectors
+- Performing semantic similarity search
+- Selecting relevant quotes
+- Exposing the retrieval functionality through an API
+
+## Status
+
+Active personal project.
